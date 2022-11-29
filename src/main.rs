@@ -3,10 +3,16 @@ mod common;
 use common::aoc_day;
 mod preparation;
 
+/**
+ * Main function, for running the code
+ */
+
 fn main() {
     // vvvvvv Change the day here vvvvvv
     let day: &dyn aoc_day::AocDay = &preparation::DayPreparation{};
+    // ^^^^^^ Change the day here ^^^^^^
 
+    // Parse the input type (real input or debug) that should be used
     let args: Vec<String> = env::args().collect();
     let input_type: aoc_day::InputType;
 
@@ -19,6 +25,7 @@ fn main() {
     }
     println!("Input mode: {:?}", input_type);
 
+    // Compute the answer and print the result
     let answer = aoc_day::run(day, input_type);
     println!("");
     println!("Result:");
