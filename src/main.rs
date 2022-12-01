@@ -9,7 +9,7 @@ mod day_01;
 
 fn main() {
     // vvvvvv Change the day here vvvvvv
-    let day: &dyn aoc_day::AocDay = &day_01::Day01{};
+    let day: &dyn aoc_day::AocDay = &day_01::Day01 {};
     // ^^^^^^ Change the day here ^^^^^^
 
     // Parse the input type (real input or debug) that should be used
@@ -30,6 +30,4 @@ fn main() {
     println!("");
     println!("Result:");
     println!("{}", answer)
-
-
 }
