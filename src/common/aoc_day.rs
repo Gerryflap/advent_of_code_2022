@@ -18,7 +18,7 @@ pub fn run(day: &dyn AocDay, i_type: InputType) -> String {
     } else {
         "real.txt"
     };
-    let fpath = "./src/".to_string() + &day.get_path() + "/" + fname;
+    let fpath = "./src/".to_string() + day.get_path() + "/" + fname;
     fs::read_to_string(fpath).map_or_else(
         |e| format!("File Read Error!\n !{}", e),
         |s| day.run(&s),
@@ -28,8 +28,8 @@ pub fn run(day: &dyn AocDay, i_type: InputType) -> String {
 // Defines the required functions that have to be implemented for every advent of code day
 pub trait AocDay {
     // Runs the code for that day, given a String and returns the String output
-    fn run(&self, inp: &String) -> String;
+    fn run(&self, inp: &str) -> String;
 
     // Returns the folder path as seen from root, used for finding the input files
-    fn get_path(&self) -> String;
+    fn get_path(&self) -> &str;
 }

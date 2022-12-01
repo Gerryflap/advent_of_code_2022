@@ -1,6 +1,7 @@
 use std::env;
 mod common;
 use common::aoc_day;
+mod preparation;
 mod day_01;
 
 /**
