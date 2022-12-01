@@ -5,7 +5,7 @@ use std::fs;
  */
 
 // Enum for representing the input type. Used to switch between debug.txt and real.txt input files.
-#[derive(PartialEq, Debug)]
+#[derive(PartialEq, Eq, Debug)]
 pub enum InputType {
     Debug,
     Real,

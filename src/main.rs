@@ -27,7 +27,7 @@ fn main() {
 
     // Compute the answer and print the result
     let answer = aoc_day::run(day, input_type);
-    println!("");
+    println!();
     println!("Result:");
     println!("{}", answer)
 }
