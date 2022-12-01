@@ -18,7 +18,7 @@ pub fn run(day: &dyn AocDay, i_type: InputType) -> String {
     } else {
         "real.txt"
     };
-    let fpath = "./src/".to_string() + day.get_path() + "/" + fname;
+    let fpath = "./src/input/".to_string() + day.get_path() + "/" + fname;
     fs::read_to_string(fpath).map_or_else(
         |e| format!("File Read Error!\n !{}", e),
         |s| day.run(&s),
