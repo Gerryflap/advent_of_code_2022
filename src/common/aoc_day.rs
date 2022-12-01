@@ -21,14 +21,14 @@ pub fn run(day: &dyn AocDay, i_type: InputType) -> String {
     let fpath = "./src/".to_string() + &day.get_path() + "/" + fname;
     return fs::read_to_string(fpath).map_or_else(
         |e| format!("File Read Error!\n !{}", e.to_string()),
-        |s| day.run(s),
+        |s| day.run(&s),
     );
 }
 
 // Defines the required functions that have to be implemented for every advent of code day
 pub trait AocDay {
     // Runs the code for that day, given a String and returns the String output
-    fn run(&self, inp: String) -> String;
+    fn run(&self, inp: &String) -> String;
 
     // Returns the folder path as seen from root, used for finding the input files
     fn get_path(&self) -> String;
