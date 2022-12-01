@@ -11,7 +11,7 @@ pub struct DayPreparation;
 // Implement the trait AocDay for this advent of code day, which allows us to easily run it.
 impl aoc_day::AocDay for DayPreparation {
     fn run(&self, inp: &str) -> String {
-        return format!("{}", count_increases(parse_lines(inp)));
+        format!("{}", count_increases(parse_lines(inp)))
     }
 
     fn get_path(&self) -> &str{
@@ -21,7 +21,7 @@ impl aoc_day::AocDay for DayPreparation {
 
 // Parses lines into a vector of ints
 fn parse_lines(inp: &str) -> Vec<i64> {
-    return inp.split("\n")
+    return inp.split('\n')
         .filter_map(|s| s.parse::<i64>().ok())
         .collect();
 }
