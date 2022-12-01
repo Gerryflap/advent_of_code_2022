@@ -2,7 +2,7 @@ use std::env;
 mod common;
 use common::aoc_day;
 mod solutions;
-use solutions::day_01 as day_01;
+use solutions::day_01;
 
 /**
  * Main function, for running the code

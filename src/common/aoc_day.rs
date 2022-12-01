@@ -19,10 +19,7 @@ pub fn run(day: &dyn AocDay, i_type: InputType) -> String {
         "real.txt"
     };
     let fpath = "./src/input/".to_string() + day.get_path() + "/" + fname;
-    fs::read_to_string(fpath).map_or_else(
-        |e| format!("File Read Error!\n !{}", e),
-        |s| day.run(&s),
-    )
+    fs::read_to_string(fpath).map_or_else(|e| format!("File Read Error!\n !{}", e), |s| day.run(&s))
 }
 
 // Defines the required functions that have to be implemented for every advent of code day
