@@ -1,7 +1,7 @@
 use std::env;
 mod common;
 use common::aoc_day;
-mod preparation;
+mod day_01;
 
 /**
  * Main function, for running the code
@@ -9,7 +9,7 @@ mod preparation;
 
 fn main() {
     // vvvvvv Change the day here vvvvvv
-    let day: &dyn aoc_day::AocDay = &preparation::DayPreparation{};
+    let day: &dyn aoc_day::AocDay = &day_01::Day01{};
     // ^^^^^^ Change the day here ^^^^^^
 
     // Parse the input type (real input or debug) that should be used
