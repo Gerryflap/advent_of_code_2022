@@ -7,20 +7,25 @@ impl aoc_day::AocDay for Day02 {
         format!("q1: {}\nq2: {}", q1(inp), q2(inp))
     }
 
-    fn get_path(&self) -> &str{
+    fn get_path(&self) -> &str {
         "day_02"
     }
 }
 
 fn q1(inp: &str) -> i64 {
-    inp.split('\n').map(|l| outcome_points(l) + choice_points(l)).sum()
+    inp.split('\n')
+        .map(|l| outcome_points(l) + choice_points(l))
+        .sum()
 }
 
 fn q2(inp: &str) -> i64 {
-    inp.split('\n').map(q2_to_q1_converter)
-    .map(|l| outcome_points(l) + choice_points(l)).sum()
+    inp.split('\n')
+        .map(q2_to_q1_converter)
+        .map(|l| outcome_points(l) + choice_points(l))
+        .sum()
 }
 
+// Compute the points for the game outcome
 fn outcome_points(inp_line: &str) -> i64 {
     match inp_line {
         "A X" => 3,
@@ -36,6 +41,7 @@ fn outcome_points(inp_line: &str) -> i64 {
     }
 }
 
+// Compute the points for the choice we made
 fn choice_points(inp_line: &str) -> i64 {
     let char: Option<char> = inp_line.chars().nth(2);
     match char {
@@ -43,11 +49,16 @@ fn choice_points(inp_line: &str) -> i64 {
         Some('Y') => 2,
         Some('Z') => 3,
         Some(x) => panic!("Could not parse character '{}'", x),
-        None => panic!("Got too short line '{}'", inp_line)
+        None => panic!("Got too short line '{}'", inp_line),
     }
 }
 
-fn q2_to_q1_converter(inp_line: &str) -> &str{
+/**
+ * Sometimes you just need to do the stupid but easy solution.
+ * Grabs a line from q2 ("<opponent choice> <preferred outcome>") and converts
+ * it to q1 format ("<opponent choice> <our choice>") so we can plug it into those functions.
+ * */
+fn q2_to_q1_converter(inp_line: &str) -> &str {
     match inp_line {
         "A X" => "A Z",
         "A Y" => "A X",
