@@ -13,21 +13,25 @@ impl aoc_day::AocDay for Day04 {
 }
 
 fn q1(inp: &str) -> usize {
-    inp.split('\n').filter(|&line| q1_line_ranges_fully_contain(line)).count()
+    inp.split('\n')
+        .filter(|&line| q1_line_ranges_fully_contain(line))
+        .count()
 }
 
 fn q2(inp: &str) -> usize {
-    inp.split('\n').filter(|&line| q2_line_ranges_overlap(line)).count()
+    inp.split('\n')
+        .filter(|&line| q2_line_ranges_overlap(line))
+        .count()
 }
 
 struct Range {
     start: i64,
-    end: i64
+    end: i64,
 }
 
 // Tests whether range a fully contains range b
 fn fully_contains(a: &Range, b: &Range) -> bool {
-    a.start <= b.start && a.end >= b.end 
+    a.start <= b.start && a.end >= b.end
 }
 
 // Tests whether range a fully contains range b, or the other way around
@@ -38,7 +42,10 @@ fn bidirectional_fully_contains(a: &Range, b: &Range) -> bool {
 // Parses a string "<num>-<num>" to a range. Panics if there is no such string
 fn parse_range(text: &str) -> Range {
     let mut range_nums = text.split('-').map(|s| s.parse::<i64>().unwrap());
-    Range { start: range_nums.next().unwrap(), end: range_nums.next().unwrap() }
+    Range {
+        start: range_nums.next().unwrap(),
+        end: range_nums.next().unwrap(),
+    }
 }
 
 fn q1_line_ranges_fully_contain(line: &str) -> bool {
@@ -48,9 +55,9 @@ fn q1_line_ranges_fully_contain(line: &str) -> bool {
 
 // Whether range a an range b have some overlap
 fn overlap(a: &Range, b: &Range) -> bool {
-    bidirectional_fully_contains(a, b) || 
-        (a.start >= b.start && a.start <= b.end) ||
-        (b.start >= a.start && b.start <= a.end)
+    bidirectional_fully_contains(a, b)
+        || (a.start >= b.start && a.start <= b.end)
+        || (b.start >= a.start && b.start <= a.end)
 }
 
 fn q2_line_ranges_overlap(line: &str) -> bool {
